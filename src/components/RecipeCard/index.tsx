@@ -40,7 +40,7 @@ export const RecipeCard:FC<RecipeCardProps> = memo(({recipe}) => {
         />
         <Stack spacing={2} alignItems="center" width={1} position="absolute" bottom={0} 
             sx={{backgroundColor:"white", py:2}}>
-            <Box sx={{maxWidth:"80%",overflow:"hidden"}}>
+            <Box sx={{maxWidth:"80%",overflow:"hidden", textAlign:"center"}}>
                 {recipe.title}
             </Box>
             <Stack direction="row" spacing={4} color="#6f737a">

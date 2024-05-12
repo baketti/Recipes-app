@@ -4,7 +4,7 @@ import SearchRecipesScene from "@/spa/scenes/SearchRecipesScene";
 import RecipeDetailsScene from "../scenes/RecipeDetailsScene";
 import AppContainer from "@/components/AppContainer";
 
-const App: React.FC = () => {
+const App = memo(() => {
     return (
         <BrowserRouter basename="/recipes">
           <Routes>
@@ -15,7 +15,9 @@ const App: React.FC = () => {
           </Routes>
         </BrowserRouter>
     );
-  };
+  });
   
+  App.displayName = "App";
+
   export default memo(App);
   

@@ -1,26 +1,54 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useMemo, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from "react-redux";
-import { actions, selectors } from "../../redux-store";
+import { actions, selectors } from "@/spa/redux-store";
+
+const schema = yup.object().shape({
+  query: yup.string().optional().min(3).max(50),
+});
+
+type FormSearchRecipesData = {
+  query: string;
+}
 
 export const useSearchRecipesScene = () => {
   const dispatch = useDispatch();
-  const recipesList = useSelector(selectors.getRecipesList);
-  console.log(recipesList);
-  /* const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null); */
 
-  const getRecipesByQuery = useCallback(
-    () => {
-      //setLoading(true);
-      dispatch(actions.getRecipesByQuery.request({}));
-    },
-    [dispatch]
+  const defaultValues: FormSearchRecipesData = useMemo<FormSearchRecipesData>(
+    () => ({
+      query: "",
+    }), []
   );
 
-  useEffect(() => {
-      getRecipesByQuery();
-  }, [getRecipesByQuery]);
+  const formData = useForm({
+    resolver: yupResolver(schema),
+    defaultValues,
+  });
 
-  return {};
+  const {
+    handleSubmit,
+    reset,
+    formState: { isValid, isSubmitted, isDirty },
+  } = formData;
+
+  const submitDisabled = (isSubmitted && !isValid) || !isDirty;
+
+  const triggerSubmit = useMemo(
+    ()=> handleSubmit((data) => {
+      console.log(data);
+      const { query } = data;
+      dispatch(actions.getRecipesByQuery.request({ query }));
+    }), [handleSubmit, dispatch]);
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [reset, defaultValues]);
+
+  return {
+    formData,
+    triggerSubmit,
+    submitDisabled,
+  };
 };
