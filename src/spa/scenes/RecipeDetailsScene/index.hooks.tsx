@@ -23,7 +23,6 @@ export const useRecipeDetailsScene = () => {
     }, [recipe]);
 
     return {
-        recipeId,
         isLoadingRecipe,
         recipe  
     };

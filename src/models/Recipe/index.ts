@@ -1,7 +1,5 @@
 import { Ingredient } from "../Ingredient";
 
-export type RecipesList = Recipe[];
-
 export type Recipe = {
     id: number;
     image: string;
@@ -20,7 +18,7 @@ export type RecipeDetails = Recipe & {
     preparationMinutes: number;
     cookingMinutes: number;
     summary: string;
-    tastes: Taste;
+    taste: Taste;
     analyzedInstructions: AnalyzedInstructions;
 }
 
