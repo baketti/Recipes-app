@@ -5,7 +5,6 @@ import {
     ApiFailAction,
     HttpMethod,
   } from "../api-builder";
-
   export interface GetRecipeByRecipeIdParams {
     recipeId: string;
   }
@@ -27,6 +26,9 @@ import {
       {
         path: `/${params.recipeId}/information`,
         method: HttpMethod.GET,
+        query: {
+          includeNutrition: true,
+        }
       },
     ),
   }),

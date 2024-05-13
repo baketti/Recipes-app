@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import { useRecipeDetailsScene } from './index.hooks';
 import { Stack, Typography, Box, CircularProgress } from '@mui/material';
-    
+import Image from 'next/image';
+
 type RecipeDetailsSceneProps = {};
 
 const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
@@ -21,9 +22,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
 
     return (
         <Stack>
-            <Typography variant="h4">
-                Recipe Details Scene of {recipeId}
-            </Typography>
+            <Image src={recipe.image} alt='recipe-image' width={440} height={250} />
         </Stack>
     );
 })

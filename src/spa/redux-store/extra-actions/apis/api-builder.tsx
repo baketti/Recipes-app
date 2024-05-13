@@ -15,7 +15,7 @@ import {
     method: HttpMethod;
     body?: any;
     query?: any;
- }
+  }
   
   export interface ApiRequestPayloadType<T> {
     params: ApiRequestPayloadBuilderParams;

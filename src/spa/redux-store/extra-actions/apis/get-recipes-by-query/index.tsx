@@ -5,7 +5,8 @@
     ApiFailAction,
     HttpMethod,
   } from "../api-builder";
-  
+  import { Recipe } from "@/models/Recipe";
+
   export interface ComplexSearchParams {
     query?: string;
     cuisine?: string;
@@ -13,7 +14,7 @@
   }
   
   export interface ComplexSearchResponseData {
-    results: Record<string, any>[]; 
+    results: Recipe[]; 
     //totalResults: number;
   }
   

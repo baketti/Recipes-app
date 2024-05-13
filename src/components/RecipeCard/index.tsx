@@ -6,9 +6,10 @@ import TimerIcon from '@mui/icons-material/Timer';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import CircleIcon from '@mui/icons-material/Circle';
 import { useRecipeCard } from './index.hooks';
+import { Recipe } from '@/models/Recipe';
 
 type RecipeCardProps = {
-    recipe: Record<string, any>;
+    recipe: Recipe;
 };
 
 export const RecipeCard:FC<RecipeCardProps> = memo(({recipe}) => {
