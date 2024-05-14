@@ -7,8 +7,8 @@ type AppContainerProps = {};
 
 const AppContainer = memo(({}: AppContainerProps) => {
   return (
-    <PageContainer isLandingPage={false}>
-        <Stack sx={{marginTop: "100px"}} width={1} alignItems="center">
+    <PageContainer>
+        <Stack width={1} alignItems="center">
             <Outlet />
         </Stack>
     </PageContainer>

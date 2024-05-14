@@ -7,7 +7,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 export default function Home() {
   return (
-    <PageContainer isLandingPage={true}>
+    <PageContainer>
       <Box sx={{
         width:"35%",
         height:"45%",
@@ -15,9 +15,9 @@ export default function Home() {
         marginTop: "100px"
       }}>
         <Stack spacing={2}>
-          <Typography variant="h2">Ready for Trying a new recipe?</Typography>
+          <Typography variant="h1" color="primary">Ready for trying a new veggie recipe?</Typography>
           <NextLink href="/recipes" style={{textDecoration:"none"}}>
-            <Typography variant="h4" color="primary" sx={{
+            <Typography variant="h3" color="#0000FF" sx={{
               "&:hover":{
                 textDecoration:"underline",
               },
@@ -25,10 +25,18 @@ export default function Home() {
               Go to recipes <ArrowOutwardIcon />
             </Typography>
           </NextLink>
+          <Stack width={1} flex={1} minHeight={{ xs: "auto", md: "300px"}}>
+
+          </Stack>
         </Stack>
       </Box>
-      <Box position="absolute" sx={{top:0,right:0,zIndex:-1}}>
-        <Image src={illustration} alt="Illustration" />
+      <Box position="absolute" sx={{
+        top:0,
+        right:0,
+        zIndex:-1,
+        display: { xs: "none", md: "block"},
+      }}>
+        <Image src={illustration} alt="Illustration" objectFit="contain" />
       </Box>
     </PageContainer>
   );

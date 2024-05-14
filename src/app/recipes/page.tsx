@@ -1,4 +1,5 @@
 "use client"
+
 import React, { memo } from "react";
 import RecipesSpa from "@/spa";
 

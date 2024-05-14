@@ -18,9 +18,9 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
   return (
     <Stack sx={{ p: 2, alignItems:"center", width:"100%" }} spacing={4}>
       <FormProvider {...formData}>
-        <form onSubmit={triggerSubmit}>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <SearchTextField name="query" label="Search" fullWidth/>
+        <form onSubmit={triggerSubmit} style={{width:"100%"}}>
+          <Stack direction="row" spacing={1} justifyContent="center">
+            <SearchTextField name="query" label="Search" sx={{ flexGrow: 0.5 }}/>
             <IconButton 
                 type="submit" color="primary" aria-label="search" size="large" 
                 disabled={submitDisabled}>

@@ -29,7 +29,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
 
     return (
         <Stack spacing={2}>
-            <Image src={recipe.image} alt='recipe-image' width={450} height={250} />
+            <Image src={recipe.image} alt='recipe-image' width={950} height={350} />
             <Stack spacing={2} direction="row" alignItems="center">
                 <Box>
                     <Stack>
