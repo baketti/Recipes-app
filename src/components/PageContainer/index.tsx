@@ -13,11 +13,11 @@ import {
 } from "@mui/material";
 import { Footer } from "@/components/Footer";
 import Image from "next/image";
+import logo from "@/assets/logo.svg"; 
 import { lightTheme } from "@/themes";
 
 type PageContainerProps = {
   background?: string;
-  logo?: string;
   title?: string;
   sx?: BoxProps["sx"];
   isLandingPage?: boolean;
@@ -27,7 +27,6 @@ type PageContainerProps = {
 export const PageContainer = memo(
   ({
     background,
-    logo,
     title,
     children,
     sx,
@@ -63,7 +62,7 @@ export const PageContainer = memo(
                     justifyContent="center"
                   >
                     <Image
-                      src={logo ?? ""}
+                      src={logo}
                       alt="Logo"
                       width={40}
                       height={40}
@@ -102,9 +101,9 @@ export const PageContainer = memo(
               >
                 {children}
               </Stack>
-              <Footer />
             </Container>
-          </Stack>
+           </Stack>
+          <Footer />
         </Box>
       </ThemeProvider>
     );

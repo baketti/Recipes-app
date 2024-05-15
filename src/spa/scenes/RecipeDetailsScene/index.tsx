@@ -55,7 +55,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                 <Typography variant='body1' component="p" dangerouslySetInnerHTML={{ __html: recipe.summary }} />
             </Stack>
             <Stack>
-                <NutrientsGraph nutrients={recipe.nutrients} />
+                <NutrientsGraph nutrients={recipe.nutrition.nutrients} />
             </Stack>
             <Stack>
                 <Typography variant='h3'>Ingredients</Typography>

@@ -3,12 +3,7 @@ import { Ingredient } from "../Ingredient";
 export type Recipe = {
     id: number;
     image: string;
-    nutrients: {
-        name: string;
-        amount: number;
-        unit: string;
-        percentOfDailyNeeds: number;
-    }[];
+    nutrition: Nutrition;
     readyInMinutes: number;
     title: string;
 }
@@ -20,6 +15,24 @@ export type RecipeDetails = Recipe & {
     summary: string;
     taste: Taste;
     analyzedInstructions: AnalyzedInstructions;
+}
+
+type Nutrition = {
+    nutrients: {
+        name: string;
+        amount: number;
+        unit: string;
+        percentOfDailyNeeds: number;
+    }[];
+    caloricBreakdown: {
+        percentProtein: number;
+        percentFat: number;
+        percentCarbs: number;
+    };
+    weightPerServing: {
+        amount: number;
+        unit: string;
+    };
 }
 
 type Taste = {
@@ -53,3 +66,17 @@ type AnalyzedInstructions = {
     name: string;
     steps: AnalyzedInstructionsStep[];
 }[];
+
+export enum RecipeNutrients {
+    CARBOHYDRATES = "Carbohydrates",
+    PROTEIN = "Protein",
+    FAT = "Fat",
+    CALORIES = "Calories",
+}
+
+export enum NutrientsLabels {
+    CARBOHYDRATES = "Carbs",
+    PROTEIN = "Protein",
+    FAT = "Fats",
+    CALORIES = "Cals",
+}

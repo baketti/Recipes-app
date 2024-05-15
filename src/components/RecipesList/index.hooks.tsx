@@ -6,10 +6,9 @@ export const useRecipesList = () => {
     const dispatch = useDispatch();
 
     const recipesList = useSelector(selectors.getRecipesList);
-    console.log(recipesList);
 
     useEffect(() => {
-        dispatch(actions.getRecipesByQuery.request({}));
+        dispatch(actions.getRecipesRandom.request({}));
     }, [dispatch]);
 
     return {

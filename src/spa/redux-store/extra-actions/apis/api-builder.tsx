@@ -30,7 +30,6 @@ import {
         query: {
             ...params.query,
             apiKey: process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
-            diet: 'vegetarian',
         },
       },
   });

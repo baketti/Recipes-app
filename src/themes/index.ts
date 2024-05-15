@@ -4,7 +4,6 @@ import { createTheme, responsiveFontSizes, alpha } from "@mui/material";
 import { deepmerge } from "@mui/utils";
 import { ThemeOptions } from "@mui/material/styles/createTheme";
 import { Roboto } from 'next/font/google';
-import { green } from "@mui/material/colors";
 
 export const Colors = {
   primary: "#030352",

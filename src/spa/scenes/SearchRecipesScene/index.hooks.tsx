@@ -16,7 +16,7 @@ type FormSearchRecipesData = {
 export const useSearchRecipesScene = () => {
   const dispatch = useDispatch();
 
-  const defaultValues: FormSearchRecipesData = useMemo<FormSearchRecipesData>(
+  const defaultValues = useMemo<FormSearchRecipesData>(
     () => ({
       query: "",
     }), []

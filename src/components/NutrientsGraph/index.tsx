@@ -8,8 +8,9 @@ type NutrientsGraphProps = NutrientsProps;
 
 export const NutrientsGraph = memo(({ nutrients }:NutrientsGraphProps) => {
     const {
-        data,
         series,
+        caloriesAmount,
+        NutrientsLabels,
     } = useNutrientsGraph(nutrients);
     //TODO => COLLEGARE I DATI DALL'API RESPONSE
     return (
@@ -28,12 +29,12 @@ export const NutrientsGraph = memo(({ nutrients }:NutrientsGraphProps) => {
                     },
                 },
             }}
-            >  
+        >  
             <text x="38%" y="50%" text-anchor="middle" fill="black" fontSize="20px" fontWeight="bold">
-                Calories
+                {NutrientsLabels.CALORIES}
             </text>
             <text x="38%" y="65%" text-anchor="middle" fill="black" fontSize="24px">
-                111
+                {caloriesAmount}
             </text>
             </PieChart>
         </Paper>

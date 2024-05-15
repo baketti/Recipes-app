@@ -1,3 +1,4 @@
+import { RecipeDetails } from "@/models/Recipe";
 import {
     apiActionBuilder,
     apiRequestPayloadBuilder,
@@ -10,7 +11,7 @@ import {
   }
 
   export interface GetRecipeByRecipeIdResponseData {
-    recipeData: Record<string, any>;
+    recipeData: RecipeDetails;
   }
 
   export default apiActionBuilder<

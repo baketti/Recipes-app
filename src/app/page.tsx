@@ -9,13 +9,18 @@ export default function Home() {
   return (
     <PageContainer>
       <Box sx={{
-        width:"35%",
+        width:"38%",
         height:"45%",
         flexFlow:"wrap",
         marginTop: "100px"
       }}>
-        <Stack spacing={2}>
-          <Typography variant="h1" color="primary">Ready for trying a new veggie recipe?</Typography>
+        <Stack spacing={2} sx={{
+            position:{ xs : "absolute", sm: "relative" },
+            top: { xs: 350, sm: "unset" }
+          }}>
+          <Typography variant="h1" color="primary" >
+            Ready for trying a new vegetarian recipe?
+          </Typography>
           <NextLink href="/recipes" style={{textDecoration:"none"}}>
             <Typography variant="h3" color="#0000FF" sx={{
               "&:hover":{
@@ -25,7 +30,7 @@ export default function Home() {
               Go to recipes <ArrowOutwardIcon />
             </Typography>
           </NextLink>
-          <Stack width={1} flex={1} minHeight={{ xs: "auto", md: "300px"}}>
+          <Stack width={1} flex={1} minHeight={{ xs: "auto", md: "250px"}}>
 
           </Stack>
         </Stack>
@@ -34,9 +39,19 @@ export default function Home() {
         top:0,
         right:0,
         zIndex:-1,
-        display: { xs: "none", md: "block"},
+        display: { sm: "none", md: "block" },
       }}>
-        <Image src={illustration} alt="Illustration" objectFit="contain" />
+        <Image 
+            src={illustration} 
+            alt="Illustration" 
+            width={700}
+            height={475}
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+        />
       </Box>
     </PageContainer>
   );
