@@ -11,6 +11,7 @@ import { SearchTextField } from "@/components/SearchTextField";
 import { FormProvider } from "react-hook-form";
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
+import NextLink from "next/link";
 
 type SearchRecipesSceneProps = {};
 
@@ -25,7 +26,24 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
     helthiestRecipes
   } = useSearchRecipesScene();
   return (
-    <Stack sx={{ p: 2, alignItems:"center", width:"100%", mb:10 }} spacing={4}>
+    <Stack position="relative" sx={{ p: 2, alignItems:"center", width:"100%", mb:10 }} spacing={4}>
+      <Box sx={{
+        position:"absolute", 
+        left:0, 
+        top:{xs:-2,sm:'unset'},
+        pl:{xs:2,sm:0},
+      }}>
+        <NextLink href="/" style={{textDecoration:"none"}}>
+          <Typography variant="h6" color="primary" sx={{ 
+              "&:hover":{
+                textDecoration:"underline",
+              }
+            }}
+          >
+            Back to home
+          </Typography>
+        </NextLink>
+      </Box>
       <FormProvider {...formData}>
         <form onSubmit={triggerSubmit} style={{width:"100%"}}>
           <Stack direction="row" spacing={1} justifyContent="center">

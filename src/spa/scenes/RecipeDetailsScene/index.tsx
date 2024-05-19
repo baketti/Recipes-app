@@ -17,11 +17,13 @@ import {
  } from '@/utils';
 import TimerIcon from '@mui/icons-material/Timer';
 import noImageAvailable from '@/assets/No_Image_Available.png';
+import { Link } from "react-router-dom";
 
 type RecipeDetailsSceneProps = {};
 
 const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
     const {
+        navigate,
         isLoadingRecipe,
         recipe
     } = useRecipeDetailsScene();
@@ -40,7 +42,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
     }
 
     return (
-        <Stack spacing={8} mt={2} mb={8} sx={{
+        <Stack position="relative" spacing={8} mt={2} mb={8} sx={{
             '@media (max-width: 430px)': {
                 width: "390px",
             },
@@ -48,6 +50,18 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                 width: "350px",
             },
         }}>
+            <Box sx={{
+                position:"absolute", 
+                left:0,
+            }}>
+                <Box onClick={()=> navigate("/recipes")} style={{cursor:"pointer"}}>
+                    <Typography variant="h6" color="primary" sx={{"&:hover":{
+                                textDecoration:"underline",
+                            }
+                        }}
+                    >Back to recipes</Typography>
+                </Box>
+            </Box>
             <Stack 
                 direction={{ xs: 'column', lg: 'row' }} 
                 spacing={2} 

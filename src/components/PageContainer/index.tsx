@@ -6,11 +6,10 @@ import {
   Container,
   Stack,
   ThemeProvider,
-  Typography,
 } from "@mui/material";
 import { Footer } from "@/components/Footer";
 import { lightTheme } from "@/themes";
-import { AppBar } from "@/components/AppBar";
+import { Appbar } from "@/components/Appbar";
 
 type PageContainerProps = {
   background?: string;
@@ -39,7 +38,7 @@ export const PageContainer = memo(
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             background: { 
-              xs: "linear-gradient(to right, #92d362, #6ab47c, #4b8f61)", 
+              xs: isLandingPage ? "linear-gradient(to right, #92d362, #6ab47c, #4b8f61)" : "unset", 
               sm: "unset" 
             },
           }}
@@ -50,7 +49,7 @@ export const PageContainer = memo(
               minHeight: "100vh",
             }}
           >
-              <AppBar />
+              <Appbar />
               <Container maxWidth="lg" sx={{ minHeight: "100vh" }}>
                 <Stack
                   sx={{

@@ -4,8 +4,8 @@ import {
     ApiSuccessAction,
     ApiFailAction,
     HttpMethod,
-  } from "../api-builder";
-  import { Recipe } from "@/models/Recipe";
+} from "../api-builder";
+import { Recipe } from "@/models/Recipe";
 
   export interface GetRecipesRandomParams {}
   

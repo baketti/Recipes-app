@@ -66,7 +66,7 @@ export const useSearchRecipesScene = () => {
       return results.map(convertToRecipe);
   }, []);
 
-  useEffect(() => {
+/*   useEffect(() => {
       const getBestRecipes = async () => {
           const recipes = await fetchBestRecipes();
           setBestRecipes(recipes);
@@ -79,7 +79,7 @@ export const useSearchRecipesScene = () => {
       getHelthiestRecipes();
     }, 
     [fetchBestRecipes,fetchHelthiestRecipes]
-  );                    
+  );       */              
                   
   const defaultValues = useMemo<FormSearchRecipesData>(
     () => ({

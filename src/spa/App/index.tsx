@@ -1,11 +1,16 @@
 import React, { memo } from "react";
+import { ThemeProvider } from "@mui/material";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import SearchRecipesScene from "@/spa/scenes/SearchRecipesScene";
 import RecipeDetailsScene from "../scenes/RecipeDetailsScene";
 import AppContainer from "@/components/AppContainer";
+import { AppSnackbar } from "@/components/AppSnackbar";
+import useAppHooks from "./index.hooks";
 
 const App = memo(() => {
+  const { lightTheme, open, type, message, handleClose } = useAppHooks();
     return (
+      <ThemeProvider theme={lightTheme}>
         <BrowserRouter basename="/recipes">
           <Routes>
             <Route element={<AppContainer />}>
@@ -15,6 +20,13 @@ const App = memo(() => {
             </Route>
           </Routes>
         </BrowserRouter>
+        <AppSnackbar
+          open={open}
+          message={message}
+          severity={type}
+          onClose={handleClose}
+        />
+      </ThemeProvider>
     );
   });
   

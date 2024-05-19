@@ -7,13 +7,12 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import logo from "@/assets/logo.svg"; 
-import { lightTheme } from "@/themes";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Link from 'next/link';
 
-type AppbarProps = {};
+type AppBarProps = {};
 
-export const Appbar= memo(({}: AppbarProps) => {
+export const Appbar= memo(({}: AppBarProps) => {
   return (
       <AppBar>
         <Toolbar>
@@ -47,7 +46,7 @@ export const Appbar= memo(({}: AppbarProps) => {
               </Typography>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={2}>
-              <Link href="https://github.com/baketti/Recipes-app">
+              <Link href="https://github.com/baketti/Recipes-app" target="_blank">
                 <GitHubIcon color='primary' fontSize='large'/>
               </Link>
             </Stack>
