@@ -11,7 +11,6 @@
     query?: string;
     cuisine?: string;
     number?: number;
-    sort?: 'popularity' | 'healthiness' ;
     //...otherParams???
   }
   

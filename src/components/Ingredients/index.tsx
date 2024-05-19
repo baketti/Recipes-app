@@ -14,16 +14,22 @@ export const Ingredients = memo(({ ingredients }: IngredientProps) => {
     const {} = useIngredients();
 
     return (
-        <Stack spacing={1}>
+        <Stack spacing={2} sx={{mt:2}}>
             {ingredients.map((ingredient) => (
                 <Paper key={ingredient.id} sx={{ p: 2 }}>
                     <Stack direction="row" justifyContent="space-between" alignItems="center">
-                        <Stack direction="row">
+                        <Stack direction="row" alignItems="center" spacing={3}>
                             <Image src={BASE_INGREDIENT_IMG_URL+ingredient.image} alt='ingredient-image' 
-                                width={60} height={60} />
-                            <Typography>{ingredient.nameClean}</Typography>
+                                width={70} height={70} />
+                            <Typography 
+                                variant="h4" 
+                                sx={{textTransform:"capitalize", fontWeight: "bold"}}
+                                color='primary'
+                            >
+                                {ingredient.nameClean}
+                            </Typography>
                         </Stack>
-                        <Typography>
+                        <Typography variant="h4" color='rgba(0,0,0,0.6)' sx={{fontWeight: "bold"}}>
                             {ingredient.measures.metric.amount} {ingredient.measures.metric.unitShort}    
                         </Typography>
                     </Stack>

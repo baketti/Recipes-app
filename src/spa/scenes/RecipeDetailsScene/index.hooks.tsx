@@ -16,6 +16,9 @@ export const useRecipeDetailsScene = () => {
         if (recipeId) {
             dispatch(actions.getRecipeByRecipeId.request({ recipeId }));
         }
+        return () => {
+            dispatch(actions.resetCurrentRecipe());
+        };
     }, [dispatch, recipeId]);
 
     useEffect(() => {

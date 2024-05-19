@@ -1,5 +1,22 @@
 import { Ingredient } from "../Ingredient";
 
+export function convertToRecipe(recipe: Record<string, any>): Recipe {
+    return {
+        id: recipe.id,
+        title: recipe.title,
+        readyInMinutes: recipe.readyInMinutes,
+        image: recipe.image,
+        nutrition: {
+            nutrients: recipe.nutrition.nutrients.filter((nutrient: { name: string; }) => 
+                nutrient.name === "Calories" || 
+                nutrient.name === "Protein" ||
+                nutrient.name === "Fat" || 
+                nutrient.name === "Carbohydrates"
+            ),
+        }
+    }
+}
+
 export type Recipe = {
     id: number;
     image: string;
@@ -23,16 +40,7 @@ type Nutrition = {
         amount: number;
         unit: string;
         percentOfDailyNeeds: number;
-    }[];
-    caloricBreakdown: {
-        percentProtein: number;
-        percentFat: number;
-        percentCarbs: number;
-    };
-    weightPerServing: {
-        amount: number;
-        unit: string;
-    };
+    }[]
 }
 
 type Taste = {

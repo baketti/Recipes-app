@@ -1,19 +1,32 @@
 import React, { memo } from "react";
-import { Typography, Button, Paper, Box, Stack } from "@mui/material";
+import { 
+    Box, 
+    Stack,
+    CircularProgress
+} from "@mui/material";
 import { RecipeCard } from "@/components/RecipeCard";
 import { useRecipesList } from "./index.hooks"
+import { Recipe } from "@/models/Recipe";
 
-type RecipesListProps = {};
+type RecipesListProps = {
+    recipesList: Recipe[];
+};
 
-export const RecipesList = memo(({}: RecipesListProps) => {
-    const {
-        recipesList,
-    } = useRecipesList();
+export const RecipesList = memo(({recipesList}: RecipesListProps) => {
+    const {} = useRecipesList();
+
     return (
-        <Stack direction="row" sx={{ flexWrap:"wrap", justifyContent:"center", gap:4 }}>
-                {recipesList.map((recipe) => (
-                    <RecipeCard key={recipe.id} recipe={recipe} />
-                ))}
+        <Stack 
+            direction="row" 
+            sx={{ 
+                flexWrap:"wrap", 
+                justifyContent:"center", 
+                gap:4 
+            }}
+        >
+            {recipesList.map((recipe) => (
+                <RecipeCard key={recipe.id} recipe={recipe}/>
+            ))}
         </Stack>
     );
 });

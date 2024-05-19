@@ -12,30 +12,36 @@ export const NutrientsGraph = memo(({ nutrients }:NutrientsGraphProps) => {
         caloriesAmount,
         NutrientsLabels,
     } = useNutrientsGraph(nutrients);
-    //TODO => COLLEGARE I DATI DALL'API RESPONSE
     return (
-        <Paper sx={{p:2}}>
-            <PieChart
-            //può avere una prop margin 
-            series={series}
-            width={400}
-            height={300}
-            slotProps={{
-                legend: { 
-                    direction: 'column',
-                    position: { 
-                        vertical: 'middle', 
-                        horizontal: 'right'
-                    },
-                },
+        <Paper 
+            sx={{
+                p:2,
+                width:{xs:"90%",md:"45%"},
+                display:"flex",
+                justifyContent:"center",
             }}
-        >  
-            <text x="38%" y="50%" text-anchor="middle" fill="black" fontSize="20px" fontWeight="bold">
-                {NutrientsLabels.CALORIES}
-            </text>
-            <text x="38%" y="65%" text-anchor="middle" fill="black" fontSize="24px">
-                {caloriesAmount}
-            </text>
+        >
+            <PieChart
+                series={series}
+                width={300}
+                height={300}
+                slotProps={{
+                    legend: { 
+                        direction: 'column',
+                        position: { 
+                            vertical: 'middle', 
+                            horizontal: 'right'
+                        },
+                        padding: -35,
+                    },
+                }}
+            >  
+                <text x="34%" y="40%" text-anchor="middle" fill="black" fontSize="20px" fontWeight="bold">
+                    {NutrientsLabels.CALORIES}
+                </text>
+                <text x="34%" y="55%" text-anchor="middle" fill="black" fontSize="24px">
+                    {caloriesAmount}
+                </text>
             </PieChart>
         </Paper>
     );

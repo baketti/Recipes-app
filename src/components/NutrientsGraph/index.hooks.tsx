@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect,useCallback } from "react";
 import { Nutrient } from "../Nutrients";
 import { RecipeNutrients, NutrientsLabels } from "@/models/Recipe";
 
@@ -11,23 +11,32 @@ export const useNutrientsGraph = (nutrients: Nutrient[]) => {
             recipeNutrientsValues.includes(nutrient.name as RecipeNutrients));
     }, [nutrients])
 
-    const caloriesAmount = useMemo(() => {
-        const calories = nutrients?.find(nutrient => nutrient.name === RecipeNutrients.CALORIES);
-        return calories?.amount;
-    } ,[nutrients])
-
     const data = useMemo(() => {
-        const labels = Object.values(NutrientsLabels);
-        return filteredNutrients?.map((nutrient,i) => ({
-            label: labels[i],
-            value: nutrient.amount,
-            color: nutrient.name === RecipeNutrients.CARBOHYDRATES ? 'red' : 
-                   nutrient.name === RecipeNutrients.PROTEIN ? 'blue' : 
-                   'orange'
-            })
-        ) 
-    } ,[filteredNutrients])
-
+        return filteredNutrients?.map((nutrient) => {       
+            let color = ''; 
+            let label = '';
+            switch (nutrient.name) {
+                case RecipeNutrients.CARBOHYDRATES:
+                    label = NutrientsLabels.CARBOHYDRATES;
+                    color = 'red';
+                    break;
+                case RecipeNutrients.PROTEIN:
+                    label = NutrientsLabels.PROTEIN;
+                    color = 'blue';
+                    break;
+                case RecipeNutrients.FAT:
+                    label = NutrientsLabels.FAT;
+                    color = 'orange';
+                    break;
+            }            
+            return {
+                label,
+                value: nutrient.amount,
+                color,
+            }
+        });
+    }, [filteredNutrients]);
+    
     const series = useMemo(() => {
         return [
             {
@@ -38,6 +47,11 @@ export const useNutrientsGraph = (nutrients: Nutrient[]) => {
             },
         ];
     },[data])
+
+    const caloriesAmount = useMemo(() => {
+        const calories = nutrients.find(nutrient => nutrient.name === RecipeNutrients.CALORIES);
+        return calories?.amount;
+    }, [nutrients])
 
     return {
         data,

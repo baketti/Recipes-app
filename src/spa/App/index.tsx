@@ -11,6 +11,7 @@ const App = memo(() => {
             <Route element={<AppContainer />}>
               <Route path="" element={<SearchRecipesScene />} />
               <Route path="/:recipeId" element={<RecipeDetailsScene />} />
+              {/* <Route path="*" element={<NotFoundPage />} /> */}
             </Route>
           </Routes>
         </BrowserRouter>

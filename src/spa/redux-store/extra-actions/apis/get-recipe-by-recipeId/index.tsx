@@ -10,9 +10,7 @@ import {
     recipeId: string;
   }
 
-  export interface GetRecipeByRecipeIdResponseData {
-    recipeData: RecipeDetails;
-  }
+  export interface GetRecipeByRecipeIdResponseData extends RecipeDetails {}
 
   export default apiActionBuilder<
   GetRecipeByRecipeIdParams,

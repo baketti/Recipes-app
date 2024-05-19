@@ -10,7 +10,7 @@ import {
   export interface GetRecipesRandomParams {}
   
   export interface GetRecipesRandomResponseData {
-    results: Recipe[]; 
+    recipes: Recipe[]; 
   }
   
   export default apiActionBuilder<
@@ -27,10 +27,11 @@ import {
           path: "/random",
           method: HttpMethod.GET,
           query: {
-            number: 10,
+            number: 0,
             'include-tags': 'vegetarian',
-            ...params,
+            includeNutrition: true,
           },
+          ...params,
         },
       ),
     }),
