@@ -17,7 +17,7 @@ import {
  } from '@/utils';
 import TimerIcon from '@mui/icons-material/Timer';
 import noImageAvailable from '@/assets/No_Image_Available.png';
-import { Link } from "react-router-dom";
+import { TasteGraph } from '@/components/TasteGraph';
 
 type RecipeDetailsSceneProps = {};
 
@@ -54,7 +54,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                 position:"absolute", 
                 left:0,
             }}>
-                <Box onClick={()=> navigate("/recipes")} style={{cursor:"pointer"}}>
+                <Box onClick={()=> navigate("/")} style={{cursor:"pointer"}}>
                     <Typography variant="h6" color="primary" sx={{"&:hover":{
                                 textDecoration:"underline",
                             }
@@ -148,8 +148,14 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                     />
                 </Box>
             </Stack>
-            <Stack>
+            <Stack 
+                direction={{xs:'column',md:'row'}} 
+                spacing={2}
+                alignItems="center"
+                justifyContent="center"
+            >
                 <NutrientsGraph nutrients={recipe.nutrition.nutrients} />
+                <TasteGraph taste={recipe.taste} />
             </Stack>
             <Stack>
                 <Typography variant='h3' fontWeight='bold' color='primary'>

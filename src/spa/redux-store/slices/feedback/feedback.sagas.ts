@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { put, takeEvery, delay, take, call, race } from "redux-saga/effects";
-import { actions } from "@/spas/admin/redux-store/slices";
+import { actions } from "@/spa/redux-store/slices";
 
 function* closeFeedbackTask() {
   yield delay(5000);

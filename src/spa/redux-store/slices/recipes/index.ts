@@ -37,7 +37,7 @@ export const recipesStore = createSlice({
     builder.addCase(
       extraActions.getRecipeByRecipeId.success,
       (state, action) => {        
-        state.currentRecipe = action.payload.data;
+        state.currentRecipe = action.payload.data ?? null;
       }
     );
   }

@@ -43,7 +43,7 @@ type Nutrition = {
     }[]
 }
 
-type Taste = {
+export type Taste = {
     sweetness: number;
     saltiness: number;
     sourness: number;
