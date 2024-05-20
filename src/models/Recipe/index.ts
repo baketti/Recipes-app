@@ -98,3 +98,60 @@ export enum NutrientsLabels {
     FAT = "Fats",
     CALORIES = "Cals",
 }
+
+export enum Intolerances {
+    DAIRY = "Dairy",
+    EGG = "Egg",
+    GLUTEN = "Gluten",
+    GRAIN = "Grain",
+    PEANUT = "Peanut",
+    SEAFOOD = "Seafood",
+    SESAME = "Sesame",
+    SHELLFISH = "Shellfish",
+    SOY = "Soy",
+    SULFITE = "Sulfite",
+    TREE_NUT = "Tree Nut",
+    WHEAT = "Wheat"
+}
+
+export enum Cuisines {
+    AFRICAN = "African",
+    AMERICAN = "American",
+    BRITISH = "British",
+    CARIBBEAN = "Caribbean",
+    CHINESE = "Chinese",
+    EASTERN_EUROPEAN = "Eastern European",
+    EUROPEAN = "European",
+    FRENCH = "French",
+    GERMAN = "German",
+    GREEK = "Greek",
+    INDIAN = "Indian",
+    IRISH = "Irish",
+    ITALIAN = "Italian",
+    JAPANESE = "Japanese",
+    LATIN_AMERICAN = "Latin American",
+    MEDITERRANEAN = "Mediterranean",
+    MEXICAN = "Mexican",
+    MIDDLE_EASTERN = "Middle Eastern",
+    NORDIC = "Nordic",
+    SOUTHERN = "Southern",
+    SPANISH = "Spanish",
+}
+
+export enum MealTypes {
+    MAIN_COURSE = "main course",
+    SIDE_DISH = "side dish",
+    DESSERT = "dessert",
+    APPETIZER = "appetizer",
+    SALAD = "salad",
+    BREAD = "bread",
+    BREAKFAST = "breakfast",
+    SOUP = "soup",
+    BEVERAGE = "beverage",
+    SAUCE = "sauce",
+    MARINADE = "marinade",
+    FINGERFOOD = "fingerfood",
+    SNACK = "snack",
+    DRINK = "drink"
+}
+  

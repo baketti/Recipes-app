@@ -10,6 +10,8 @@
   export interface GetRecipesByQueryParams {
     query?: string;
     cuisine?: string;
+    intolerances?: string;
+    type?: string;
     number?: number;
     //...otherParams???
   }

@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from "react-redux";
 import { actions, selectors } from "@/spa/redux-store";
 import { Recipe, convertToRecipe } from "@/models/Recipe";
+import { DialogTypes } from "@/spa/redux-store/slices/ui/ui.interfaces";
 
 const schema = yup.object().shape({
   query: yup.string().optional().min(3,"Keyword must be at least 3 characters").max(50),
@@ -80,7 +81,14 @@ export const useSearchRecipesScene = () => {
       getHelthiestRecipes();
     }, 
     [fetchBestRecipes,fetchHelthiestRecipes]
-  );       */              
+  );       */           
+
+  const handleFiltersIconClick = useCallback(() => {
+    dispatch(actions.setDialogOpen({
+      dialogType: DialogTypes.FILTERS_FORM,
+      open: true,
+    }))
+  }, [dispatch]);
                   
   const defaultValues = useMemo<FormSearchRecipesData>(
     () => ({
@@ -115,6 +123,7 @@ export const useSearchRecipesScene = () => {
   return {
     recipesList,
     isRecipesListLoading,
+    handleFiltersIconClick,
     formData,
     triggerSubmit,
     submitDisabled,

@@ -6,7 +6,9 @@ import * as extraActions from "../../extra-actions";
 
 const initialState: UiState = {
   errorText: null,
-  isDialogOpen: {},
+  isDialogOpen: {
+    [DialogTypes.FILTERS_FORM]: false,
+  },
 };
 
 export const uiStore = createSlice({

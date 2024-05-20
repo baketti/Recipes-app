@@ -14,6 +14,8 @@ import IconButton from '@mui/material/IconButton';
 import NextLink from "next/link";
 import { ChevronLeft } from "@mui/icons-material";
 import { ErrorMessage } from "@/components/ErrorMessage";
+import TuneIcon from '@mui/icons-material/Tune';
+import { FiltersFormDialog } from "@/components/FiltersFormDialog";
 
 type SearchRecipesSceneProps = {};
 
@@ -21,12 +23,14 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
   const {
     recipesList,
     isRecipesListLoading,
+    handleFiltersIconClick,
     formData,
     triggerSubmit,
     submitDisabled,
     bestRecipes,
     helthiestRecipes,
   } = useSearchRecipesScene();
+
   return (
     <Stack position="relative" sx={{ p: 2, alignItems:"center", width:"100%", mb:10 }} spacing={4}>
       <Box sx={{
@@ -55,7 +59,8 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
       </Box>
       <FormProvider {...formData}>
         <form onSubmit={triggerSubmit} style={{width:"100%"}}>
-          <Stack direction="row" spacing={1} justifyContent="center">
+          <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
+            <TuneIcon sx={{cursor:"pointer"}} fontSize="large" color="primary" onClick={handleFiltersIconClick} />
             <SearchTextField name="query" label="Search" sx={{ flexGrow: 0.5 }}/>
             <IconButton 
                 type="submit" color="primary" aria-label="search" size="large" 
@@ -103,6 +108,7 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
           </>
         )
       }
+      <FiltersFormDialog />
     </Stack>
   );
 });

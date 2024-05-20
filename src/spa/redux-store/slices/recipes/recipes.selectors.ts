@@ -7,3 +7,5 @@ export const getRecipesList = createSelector(
 );
 
 export const getCurrentRecipe = (state: RootState) => state?.recipes?.currentRecipe;
+
+export const getQueryFilters = (state: RootState) => state?.recipes?.queryFilters;

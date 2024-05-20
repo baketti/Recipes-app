@@ -7,19 +7,30 @@ import { convertToRecipe } from "@/models/Recipe";
 const initialState: RecipesState = {
   recipesList: [],
   currentRecipe: null,
+  queryFilters: {},
 };
 
 export const recipesStore = createSlice({
   name: "recipes",
   initialState,
   reducers: {
-    //OPERAZIONI SINCRONE
     resetRecipesList: (state) => {
       state.recipesList = [];
     },
     resetCurrentRecipe: (state) => {
       state.currentRecipe = null;
     },
+    setQueryFilters: (
+      state, { payload }:PayloadAction<{
+        cuisine?: string;
+        intolerances?: string;
+        type?: string;
+      }>) => {
+      state.queryFilters = payload;
+    },
+    resetQueryFilters: (state) => {
+      state.queryFilters = {};
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(
