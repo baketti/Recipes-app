@@ -1,4 +1,4 @@
-import { takeEvery, fork, take, put, delay, race } from "redux-saga/effects";
+import { takeEvery, fork, take, put, race } from "redux-saga/effects";
 import { Action } from "redux";
 import axios, { CancelTokenSource } from "axios";
 import { ApiRequestAction } from "@/spa/redux-store/extra-actions/apis/api-builder";
@@ -21,16 +21,6 @@ function* ajaxTask(
   );
 
   try {
-    /* if (options?.requestDelay) {
-      const { timeout } = yield race({
-        delay: delay(options.requestDelay),
-        timeout: take(type),
-      });
-      if (timeout) {
-        return;
-      }
-    } */
-
     const { response } = yield race({
       response: axios({
         url: path,
@@ -51,6 +41,9 @@ function* ajaxTask(
         },
       });
       yield put(
+        actions.setErrorText(null)
+      );
+      yield put(
         actions.setApiLoading({
           api,
           isLoading: false,
@@ -63,6 +56,12 @@ function* ajaxTask(
     if (!axios.isCancel(e) && axios.isAxiosError(e)) {
       const status = e?.response?.status || 500;
       const message: string = e?.response?.data?.message || e.message;
+      let errorMessage = null;
+      if (status === 402) {
+        errorMessage = "Your request cannot be completed because our API token limit has been reached. Please update your payment method or try again tomorrow. We apologize for the inconvenience";
+      } else if (status === 500) {
+        errorMessage = "Unable to complete your request due to a connection error. Please check your network connection and try again. ";
+      }
       yield put({
         type: `${api}/fail`,
         payload: {
@@ -70,6 +69,9 @@ function* ajaxTask(
           message,
         },
       });
+      yield put(
+        actions.setErrorText(errorMessage)
+      );
       yield put(
         actions.setApiLoading({
           api,

@@ -18,6 +18,8 @@ import {
 import TimerIcon from '@mui/icons-material/Timer';
 import noImageAvailable from '@/assets/No_Image_Available.png';
 import { TasteGraph } from '@/components/TasteGraph';
+import { ErrorMessage } from '@/components/ErrorMessage';
+import { ChevronLeft } from "@mui/icons-material";
 
 type RecipeDetailsSceneProps = {};
 
@@ -28,7 +30,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
         recipe
     } = useRecipeDetailsScene();
 
-    if (isLoadingRecipe || !recipe) {
+    if (isLoadingRecipe) {
         return (
             <Box sx={{  
                 height: "50vh",
@@ -40,6 +42,8 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
             </Box>
         );
     }
+
+    if(!recipe) return <ErrorMessage noDataMessage="No recipe details found" />;
 
     return (
         <Stack position="relative" spacing={8} mt={2} mb={8} sx={{
@@ -54,12 +58,25 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                 position:"absolute", 
                 left:0,
             }}>
-                <Box onClick={()=> navigate("/")} style={{cursor:"pointer"}}>
-                    <Typography variant="h6" color="primary" sx={{"&:hover":{
+                <Box onClick={()=> navigate("/")} sx={{cursor:"pointer",display:"flex",alignItems:"center"}}>
+                    <ChevronLeft
+                        sx={{
+                        width: "24px",
+                        height: "24px",
+                        color: "#E39257",
+                        }}
+                    />
+                    <Typography 
+                        variant="h6" 
+                        color="#E39257" 
+                        sx={{
+                            "&:hover":{
                                 textDecoration:"underline",
                             }
                         }}
-                    >Back to recipes</Typography>
+                    >
+                        Back to recipes
+                    </Typography>
                 </Box>
             </Box>
             <Stack 

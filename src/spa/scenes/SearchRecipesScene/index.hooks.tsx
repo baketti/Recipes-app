@@ -8,7 +8,7 @@ import { actions, selectors } from "@/spa/redux-store";
 import { Recipe, convertToRecipe } from "@/models/Recipe";
 
 const schema = yup.object().shape({
-  query: yup.string().optional().min(3).max(50),
+  query: yup.string().optional().min(3,"Keyword must be at least 3 characters").max(50),
 });
 
 type FormSearchRecipesData = {
@@ -37,6 +37,7 @@ export const useSearchRecipesScene = () => {
   );
 
   const recipesList = useSelector(selectors.getRecipesList);
+  console.log("recipesList ", recipesList);  
 
   const fetchBestRecipes = useCallback(async():Promise<Recipe[]> => {
       const { data } = await axios.get<ApiResponse>(
@@ -118,6 +119,6 @@ export const useSearchRecipesScene = () => {
     triggerSubmit,
     submitDisabled,
     bestRecipes,
-    helthiestRecipes
+    helthiestRecipes,
   };
 };

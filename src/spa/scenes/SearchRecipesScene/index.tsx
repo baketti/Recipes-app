@@ -12,6 +12,8 @@ import { FormProvider } from "react-hook-form";
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import NextLink from "next/link";
+import { ChevronLeft } from "@mui/icons-material";
+import { ErrorMessage } from "@/components/ErrorMessage";
 
 type SearchRecipesSceneProps = {};
 
@@ -23,7 +25,7 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
     triggerSubmit,
     submitDisabled,
     bestRecipes,
-    helthiestRecipes
+    helthiestRecipes,
   } = useSearchRecipesScene();
   return (
     <Stack position="relative" sx={{ p: 2, alignItems:"center", width:"100%", mb:10 }} spacing={4}>
@@ -33,8 +35,15 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
         top:{xs:-2,sm:'unset'},
         pl:{xs:2,sm:0},
       }}>
-        <NextLink href="/" style={{textDecoration:"none"}}>
-          <Typography variant="h6" color="primary" sx={{ 
+        <NextLink href="/" style={{display:"flex",alignItems:"center",textDecoration:"none"}}>
+          <ChevronLeft
+            sx={{
+              width: "24px",
+              height: "24px",
+              color: "#E39257",
+            }}
+          />
+          <Typography variant="h6" color="#E39257" sx={{ 
               "&:hover":{
                 textDecoration:"underline",
               }
@@ -69,7 +78,11 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
             </Box>
         ) : (
           <>
-            <RecipesList recipesList={recipesList}/>
+            {!!recipesList.length ? (
+              <RecipesList recipesList={recipesList}/>
+            ):(
+              <ErrorMessage noDataMessage="No recipes found"/>
+            )}
             {!!bestRecipes.length && !!helthiestRecipes.length ? (
                 <>
                   <Stack alignItems='center' spacing={2} sx={{mt:10}}>

@@ -53,6 +53,16 @@ export type Taste = {
     spiciness: number;
 };
 
+export const tasteLabels: { [K in keyof Taste]: string } = {
+    sweetness: 'sweet',
+    saltiness: 'salty',
+    sourness: 'sour',
+    bitterness: 'bitter',
+    savoriness: 'savory',
+    fattiness: 'fatty',
+    spiciness: 'spicy'
+};
+
 type AnalyzedInstructionsStep = {
     number: number;
     step: string;

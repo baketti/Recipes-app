@@ -1,15 +1,5 @@
 import { useMemo } from "react";
-import { Taste } from "@/models/Recipe";
-
-const tasteLabels: { [K in keyof Taste]: string } = {
-    sweetness: 'sweet',
-    saltiness: 'salty',
-    sourness: 'sour',
-    bitterness: 'bitter',
-    savoriness: 'savory',
-    fattiness: 'fatty',
-    spiciness: 'spicy'
-};
+import { Taste, tasteLabels } from "@/models/Recipe";
 
 export const useTasteGraph = (taste:Taste) => {
     const tasteEntries = useMemo(() => Object.entries(taste), [taste]);
