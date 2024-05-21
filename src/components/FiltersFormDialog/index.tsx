@@ -19,11 +19,22 @@ export const FiltersFormDialog = memo(({}: FiltersFormDialogProps) => {
         formData,
         submitDisabled,
         triggerSubmit,
+        onCloseDialog,
         handleCancel
     } = useFiltersFormDialog();
 
     return (
-        <Dialog open={isFiltersFormDialogOpen}>
+        <Dialog 
+            open={isFiltersFormDialogOpen} 
+            onClose={onCloseDialog} 
+            PaperProps={{ 
+                sx: { 
+                    width: "100%",
+                    minWidth: "unset!important",
+                    maxWidth: "820px!important", 
+                } 
+            }}
+        > 
             <DialogTitle>
                 <Typography variant="h6" color="primary">
                     Filter your recipes search

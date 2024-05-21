@@ -55,10 +55,23 @@ export const useFiltersFormDialog = () => {
                     }
                     return acc;
                 }, {} as FormQueryFiltersData);
-            window.alert(JSON.stringify(filteredValues))
-    }), [handleSubmit]);
+            dispatch(actions.setQueryFilters(filteredValues));
+            dispatch(actions.setDialogOpen({
+                dialogType: DialogTypes.FILTERS_FORM,
+                open: false
+            }));
+    }), [handleSubmit,dispatch]);
 
     const handleCancel = useCallback(() => {
+        dispatch(actions.setDialogOpen({ 
+            dialogType: DialogTypes.FILTERS_FORM, 
+            open: false 
+        }));
+        dispatch(actions.resetQueryFilters())
+        reset(defaultValues);
+    }, [dispatch,reset, defaultValues]);
+
+    const onCloseDialog = useCallback(() => {
         dispatch(actions.setDialogOpen({ 
             dialogType: DialogTypes.FILTERS_FORM, 
             open: false 
@@ -74,6 +87,7 @@ export const useFiltersFormDialog = () => {
         formData,
         submitDisabled,
         triggerSubmit,
+        onCloseDialog,
         handleCancel
     }
 }

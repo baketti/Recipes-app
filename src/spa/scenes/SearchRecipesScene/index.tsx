@@ -69,6 +69,7 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
               <SearchIcon />
             </IconButton>
           </Stack>
+          <FiltersFormDialog />
         </form>
       </FormProvider>
       {isRecipesListLoading ? ( 
@@ -108,7 +109,6 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
           </>
         )
       }
-      <FiltersFormDialog />
     </Stack>
   );
 });

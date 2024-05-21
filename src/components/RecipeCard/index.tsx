@@ -52,7 +52,7 @@ export const RecipeCard = memo(({recipe}:RecipeCardProps) => {
         spacing={2} 
         sx={{...recipeCardStyles}}>
         <Image 
-            src={recipe.image || noImageAvailable}
+            src={recipe.image}
             alt='recipe-image'
             fill
             sizes="(max-width: 600px) 460px, (max-width: 900px) 650px, 560px"
@@ -60,7 +60,11 @@ export const RecipeCard = memo(({recipe}:RecipeCardProps) => {
             style={{
                 borderRadius:"8px 8px 0 0",
                 maxHeight:"250px",
-            }}   
+            }}
+            onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = noImageAvailable.src;
+            }}  
         />
         <Stack spacing={2} alignItems="center" width={1} position="absolute" bottom={0} 
             sx={{backgroundColor:"white", py:2}}>
