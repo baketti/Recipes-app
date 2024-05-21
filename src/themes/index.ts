@@ -1,7 +1,6 @@
 'use client';
 
-import { createTheme, responsiveFontSizes, alpha } from "@mui/material";
-import { deepmerge } from "@mui/utils";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 import { ThemeOptions } from "@mui/material/styles/createTheme";
 import { Roboto } from 'next/font/google';
 
@@ -42,12 +41,12 @@ const defaultThemeOptions: ThemeOptions = {
     fontFamily: roboto.style.fontFamily,
     h1: {
       fontFamily: roboto.style.fontFamily,
-      fontWeight: 600, // Peso massimo per Montserrat
-      fontSize: "3rem", // Ad esempio, 3 rem
+      fontWeight: 600, 
+      fontSize: "3rem", 
     },
     h2: {
       fontFamily: roboto.style.fontFamily,
-      fontWeight: 700, // Peso medio-alto per Montserrat
+      fontWeight: 700,
       fontSize: "2.5rem",
     },
     h3: {
@@ -57,19 +56,19 @@ const defaultThemeOptions: ThemeOptions = {
     },
     h4: {
       fontFamily: roboto.style.fontFamily,
-      fontWeight: 400, // Peso normale per Montserrat
+      fontWeight: 400, 
       fontSize: "1.5rem",
     },
     body1: {
-      fontWeight: 400, // Peso normale per Poppins
-      fontSize: "1rem", // Ad esempio, 1 rem
+      fontWeight: 400, 
+      fontSize: "1rem",
     },
     body2: {
-      fontWeight: 300, // Peso leggero per Poppins
+      fontWeight: 300, 
       fontSize: "0.875rem",
     },
     button: {
-      fontWeight: 600, // Peso medio per Poppins
+      fontWeight: 600, 
       fontSize: "0.875rem",
     },
   },
@@ -109,19 +108,3 @@ const defaultThemeOptions: ThemeOptions = {
 export const lightTheme = responsiveFontSizes(
   createTheme(defaultThemeOptions),
 );
-
-/* export const darkTheme = responsiveFontSizes(
-  createTheme(
-    deepmerge(defaultThemeOptions, {
-      palette: {
-        primary: {
-          main: Colors.white,
-        },
-        background: {
-          paper: Colors.primary,
-        },
-        mode: "dark",
-      },
-    }),
-  ),
-); */

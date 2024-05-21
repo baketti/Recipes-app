@@ -12,6 +12,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 import { useRecipeCard } from './index.hooks';
 import { Recipe } from '@/models/Recipe';
 import noImageAvailable from '@/assets/No_Image_Available.png';
+import { Tooltip } from '@mui/material';
 
 const recipeCardStyles = {
     borderRadius:"8px",
@@ -44,15 +45,18 @@ type RecipeCardProps = {
 
 export const RecipeCard = memo(({recipe}:RecipeCardProps) => {
     const {
+        imgSrc, 
+        setImgSrc,
         handleRecipeCardClick,
-    } = useRecipeCard();
+    } = useRecipeCard(recipe);
+
   return (
     <Stack onClick={() => handleRecipeCardClick(recipe.id)} 
         width={{lg:560,sm:650,xs:460}} 
         spacing={2} 
         sx={{...recipeCardStyles}}>
         <Image 
-            src={recipe.image}
+            src={imgSrc}
             alt='recipe-image'
             fill
             sizes="(max-width: 600px) 460px, (max-width: 900px) 650px, 560px"
@@ -61,10 +65,7 @@ export const RecipeCard = memo(({recipe}:RecipeCardProps) => {
                 borderRadius:"8px 8px 0 0",
                 maxHeight:"250px",
             }}
-            onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = noImageAvailable.src;
-            }}  
+            onError={() => setImgSrc(noImageAvailable.src)}
         />
         <Stack spacing={2} alignItems="center" width={1} position="absolute" bottom={0} 
             sx={{backgroundColor:"white", py:2}}>
@@ -90,15 +91,21 @@ export const RecipeCard = memo(({recipe}:RecipeCardProps) => {
                 </Stack>
                 <Box>
                     <Stack direction="row" spacing={1}>
-                        <Box sx={{display:"flex",alignItems:"center"}}> 
-                            <CircleIcon sx={{color:"#fda120"}}/> {Math.floor(recipe.nutrition?.nutrients[1].amount)}{recipe.nutrition?.nutrients[1].unit}
-                        </Box>
-                        <Box sx={{display:"flex",alignItems:"center"}}> 
-                            <CircleIcon sx={{color:"#f94642"}} /> {Math.floor(recipe.nutrition?.nutrients[2].amount)}{recipe.nutrition?.nutrients[2].unit}
-                        </Box>
-                        <Box sx={{display:"flex",alignItems:"center"}}> 
-                            <CircleIcon sx={{color:"#3177bb"}}/> {Math.floor(recipe.nutrition?.nutrients[3].amount)}{recipe.nutrition?.nutrients[3].unit}
-                        </Box>
+                        <Tooltip title={recipe.nutrition?.nutrients[1].name+'s'}>
+                            <Box sx={{display:"flex",alignItems:"center"}}> 
+                                <CircleIcon sx={{color:"#fda120"}}/> {Math.floor(recipe.nutrition?.nutrients[1].amount)}{recipe.nutrition?.nutrients[1].unit}
+                            </Box>
+                        </Tooltip>
+                        <Tooltip title={recipe.nutrition?.nutrients[2].name}>
+                            <Box sx={{display:"flex",alignItems:"center"}}> 
+                                <CircleIcon sx={{color:"#f94642"}} /> {Math.floor(recipe.nutrition?.nutrients[2].amount)}{recipe.nutrition?.nutrients[2].unit}
+                            </Box>
+                        </Tooltip>
+                        <Tooltip title={recipe.nutrition?.nutrients[3].name+'s'}>
+                            <Box sx={{display:"flex",alignItems:"center"}}> 
+                                <CircleIcon sx={{color:"#3177bb"}}/> {Math.floor(recipe.nutrition?.nutrients[3].amount)}{recipe.nutrition?.nutrients[3].unit}
+                            </Box>
+                        </Tooltip>
                     </Stack>
                 </Box>
             </Stack>

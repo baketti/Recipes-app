@@ -23,27 +23,28 @@ export const Appbar= memo(({}: AppBarProps) => {
               spacing={2}
               justifyContent="center"
             >
-              <Image
-                src={logo}
-                alt="Logo"
-                width={40}
-                height={40}
-              />
-              <Typography
-                component="h1"
-                variant="h3"
-                sx={{
-                  color: "primary.main",
-                  fontSize: {
-                    xs: "1rem",
-                    sm: "1.5rem",
-                    md: "2rem",
-                  },
-                }}
-                letterSpacing={1}
-              >
-                {"Healthy Meals"}
-              </Typography>
+              
+                <Image
+                  src={logo}
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                />
+                <Typography
+                  component="h1"
+                  variant="h3"
+                  sx={{
+                    color: "primary.main",
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.5rem",
+                      md: "2rem",
+                    },
+                  }}
+                  letterSpacing={1}
+                >
+                  {"Healthy Meals"}
+                </Typography>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={2}>
               <Link href="https://github.com/baketti/Recipes-app" target="_blank">

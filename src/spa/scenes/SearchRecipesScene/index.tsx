@@ -16,6 +16,8 @@ import { ChevronLeft } from "@mui/icons-material";
 import { ErrorMessage } from "@/components/ErrorMessage";
 import TuneIcon from '@mui/icons-material/Tune';
 import { FiltersFormDialog } from "@/components/FiltersFormDialog";
+import { Tooltip } from '@mui/material';
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 
 type SearchRecipesSceneProps = {};
 
@@ -34,11 +36,12 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
   return (
     <Stack position="relative" sx={{ p: 2, alignItems:"center", width:"100%", mb:10 }} spacing={4}>
       <Box sx={{
-        position:"absolute", 
-        left:0, 
-        top:{xs:-2,sm:'unset'},
-        pl:{xs:2,sm:0},
-      }}>
+          position:"absolute", 
+          left:0, 
+          top:{xs:-2,sm:'unset'},
+          pl:{xs:2,sm:0},
+        }}
+      >
         <NextLink href="/" style={{display:"flex",alignItems:"center",textDecoration:"none"}}>
           <ChevronLeft
             sx={{
@@ -60,14 +63,22 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
       <FormProvider {...formData}>
         <form onSubmit={triggerSubmit} style={{width:"100%"}}>
           <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
-            <TuneIcon sx={{cursor:"pointer"}} fontSize="large" color="primary" onClick={handleFiltersIconClick} />
+            <Tooltip title="Filters">
+              <IconButton 
+                  type="submit" color="primary" aria-label="filters" size="large" onClick={handleFiltersIconClick}
+              >
+                <TuneIcon sx={{cursor:"pointer"}} fontSize="large" color="primary"  />
+              </IconButton>
+            </Tooltip>
             <SearchTextField name="query" label="Search" sx={{ flexGrow: 0.5 }}/>
-            <IconButton 
-                type="submit" color="primary" aria-label="search" size="large" 
-                disabled={submitDisabled}
-            >
-              <SearchIcon />
-            </IconButton>
+            <Tooltip title="Search">
+              <IconButton 
+                  type="submit" color="primary" aria-label="search" size="large" 
+                  disabled={submitDisabled}
+              >
+                <SearchIcon />
+              </IconButton>
+            </Tooltip>
           </Stack>
           <FiltersFormDialog />
         </form>
@@ -109,6 +120,9 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
           </>
         )
       }
+      <Tooltip title="Scroll to top">
+        <ScrollToTopButton />
+      </Tooltip>
     </Stack>
   );
 });
