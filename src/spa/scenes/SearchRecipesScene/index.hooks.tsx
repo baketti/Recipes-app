@@ -140,7 +140,6 @@ export const useSearchRecipesScene = () => {
   } = formData;
 
   const queryFilters = useSelector(selectors.getQueryFilters);
-  console.log("queryFilters", queryFilters);
 
   useEffect(()=>{
     setValue('filters', queryFilters);
@@ -154,7 +153,6 @@ export const useSearchRecipesScene = () => {
 
   const triggerSubmit = useMemo(
     ()=> handleSubmit((data) => {
-      console.log(data);
       const { query } = data;
       dispatch(actions.getRecipesByQuery.request({ query, ...queryFilters }));
     }), [handleSubmit, dispatch,queryFilters]);

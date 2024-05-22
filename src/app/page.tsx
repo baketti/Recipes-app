@@ -147,14 +147,3 @@ export default function Home({}: HomeProps) {
     </PageContainer>
   );
 }
-
-{/* 
-<Stack>
-  <Typography variant="h2" color="primary">
-    Welcome to the Vegetarian Recipe App
-  </Typography>
-  <Typography variant="h4" color="primary">
-    Here you can find a lot of vegetarian recipes that you can try at home.
-  </Typography>
-</Stack> 
-*/}

@@ -25,10 +25,6 @@ export const useRecipeDetailsScene = () => {
         };
     }, [dispatch, recipeId]);
 
-    useEffect(() => {
-        console.log(recipe);
-    }, [recipe]);
-
     return {
         imgSrc,
         setImgSrc,
