@@ -1,4 +1,4 @@
-import { RootState } from "@/spas/admin/redux-store";
+import { RootState } from "@/spa/redux-store";
 
 export const getFeedbackOpen = (state: RootState) => state?.feedback.open;
 export const getFeedbackType = (state: RootState) => state?.feedback.type;
