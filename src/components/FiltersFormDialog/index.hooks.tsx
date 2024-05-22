@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { DialogTypes } from "@/spa/redux-store/slices/ui/ui.interfaces";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -46,21 +46,28 @@ export const useFiltersFormDialog = () => {
 
     const submitDisabled = (isSubmitted && !isValid) || !isDirty;
 
-    const triggerSubmit = useMemo(
-        ()=> handleSubmit((data) => {
+    const triggerSubmit = useCallback(
+        (event: React.FormEvent<HTMLFormElement>) => {
+          event.preventDefault();
+          handleSubmit((data) => {
             const filteredValues = Object.entries(data).reduce(
-                (acc, [key, value]) => {
-                    if (value !== "") {
-                        acc[key as keyof FormQueryFiltersData] = value;
-                    }
-                    return acc;
-                }, {} as FormQueryFiltersData);
+              (acc, [key, value]) => {
+                if (value !== "") {
+                  acc[key as keyof FormQueryFiltersData] = value;
+                }
+                return acc;
+              },
+              {} as FormQueryFiltersData
+            );
             dispatch(actions.setQueryFilters(filteredValues));
             dispatch(actions.setDialogOpen({
-                dialogType: DialogTypes.FILTERS_FORM,
-                open: false
+              dialogType: DialogTypes.FILTERS_FORM,
+              open: false
             }));
-    }), [handleSubmit,dispatch]);
+          })(event);
+        },
+        [handleSubmit, dispatch]
+    );
 
     const handleCancel = useCallback(() => {
         dispatch(actions.setDialogOpen({ 

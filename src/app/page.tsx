@@ -4,7 +4,7 @@ import Image from "next/image";
 import illustration from "@/assets/illustration.svg";
 import avocado from "@/assets/avocado.png";
 import cheers from "@/assets/cheers.png";
-import inceberg2 from "@/assets/inceberg2.png";
+import iceberg from "@/assets/iceberg.png";
 import NextLink from "next/link";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
@@ -89,7 +89,7 @@ export default function Home({}: HomeProps) {
                 ...fadeOutAndZoomAnimation,
               }}>
             <Image 
-                src={inceberg2} 
+                src={iceberg} 
                 alt="iceberg-salad" 
                 width={700}
                 height={475}
@@ -110,7 +110,7 @@ export default function Home({}: HomeProps) {
         sx={{display:{xs:'none',sm:'flex',md:'none'}}}
       >
           <Image 
-            src={inceberg2} 
+            src={iceberg} 
             alt="iceberg-salad" 
             width={400}
             height={275}

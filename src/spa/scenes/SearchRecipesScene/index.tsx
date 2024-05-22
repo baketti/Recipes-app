@@ -57,9 +57,9 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
               </IconButton>
             </Tooltip>
           </Stack>
-          <FiltersFormDialog />
         </form>
       </FormProvider>
+      <FiltersFormDialog />
       {isRecipesListLoading ? ( 
             <Box sx={{
                 width: "100%",

@@ -47,7 +47,7 @@ export const FiltersFormDialog = memo(({}: FiltersFormDialogProps) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCancel} color="error">Cancel</Button>
-                        <Button type="submit">Apply</Button>
+                        <Button type="submit" disabled={submitDisabled}>Apply</Button>
                     </DialogActions>
                 </form>
             </FormProvider>

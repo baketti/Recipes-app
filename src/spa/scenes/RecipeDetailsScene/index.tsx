@@ -27,7 +27,8 @@ type RecipeDetailsSceneProps = {};
 
 const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
     const {
-        navigate,
+        imgSrc,
+        setImgSrc,
         isLoadingRecipe,
         recipe
     } = useRecipeDetailsScene();
@@ -130,7 +131,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                     order: { xs: -1, lg: 'unset' },
                 }}>
                     <Image 
-                        src={recipe.image || noImageAvailable}
+                        src={imgSrc}
                         alt='recipe-image'
                         width={650} 
                         height={350}
@@ -140,6 +141,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                             borderRadius: "16px",
                             maxHeight: "350px",
                         }}
+                        onError={() => setImgSrc(noImageAvailable.src)}
                     />
                 </Box>
             </Stack>

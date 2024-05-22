@@ -15,6 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml"></link>
+      </head>
       <body className={inter.className} style={{
           overflowX:"hidden", margin:0, padding:0,boxSizing:"border-box"
         }}

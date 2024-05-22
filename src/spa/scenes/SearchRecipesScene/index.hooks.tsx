@@ -27,7 +27,7 @@ const schema = yup.object().shape({
   query: yup.string().when('filters', 
     (filters: Filters[], schema: yup.StringSchema) => {
       return !!Object.keys(filters[0]).length ? schema.min(0) : 
-      schema.min(3, "Keyword must be at least 3 characters").max(50);
+      schema.min(3, "Keyword must be at least 3 characters").max(20);
     }),
 });
 
@@ -112,7 +112,8 @@ export const useSearchRecipesScene = () => {
     [fetchBestRecipes,fetchHelthiestRecipes]
   );                 
 
-  const handleFiltersIconClick = useCallback(() => {
+  const handleFiltersIconClick = useCallback((event: React.MouseEvent) => {
+    event.preventDefault();
     dispatch(actions.setDialogOpen({
       dialogType: DialogTypes.FILTERS_FORM,
       open: true,
@@ -148,7 +149,6 @@ export const useSearchRecipesScene = () => {
   const hasFilters = useMemo(() => {
     return !!Object.keys(queryFilters).length
   },[queryFilters]);
-  console.log("hasFilters", hasFilters);
   
   const submitDisabled = (isSubmitted && !isValid) || (!isDirty && !hasFilters);
 
