@@ -1,7 +1,7 @@
 import { Typography, Box, Stack } from "@mui/material";
 import { PageContainer } from "@/components/PageContainer";
 import Image from "next/image";
-import illustration from "@/assets/illustration.svg";
+import illustration from "@/assets/Illustration.svg";
 import avocado from "@/assets/avocado.png";
 import cheers from "@/assets/cheers.png";
 import iceberg from "@/assets/iceberg.png";
