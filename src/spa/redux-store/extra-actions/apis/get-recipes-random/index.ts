@@ -27,7 +27,7 @@ import { Recipe } from "@/models/Recipe";
           path: "/random",
           method: HttpMethod.GET,
           query: {
-            number: 0,
+            number: 10,
             'include-tags': 'vegetarian',
             includeNutrition: true,
           },

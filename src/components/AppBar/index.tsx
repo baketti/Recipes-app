@@ -3,7 +3,8 @@ import {
   Stack, 
   Typography,
   AppBar,
-  Toolbar 
+  Toolbar,
+  Tooltip
 } from "@mui/material";
 import Image from "next/image";
 import logo from "@/assets/logo.svg"; 
@@ -47,9 +48,11 @@ export const Appbar= memo(({}: AppBarProps) => {
                 </Typography>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={2}>
-              <Link href="https://github.com/baketti/Recipes-app" target="_blank">
-                <GitHubIcon color='primary' fontSize='large'/>
-              </Link>
+              <Tooltip title="Source code" arrow>
+                <Link href="https://github.com/baketti/Recipes-app" target="_blank">
+                  <GitHubIcon color='primary' fontSize='large'/>
+                </Link>
+              </Tooltip>
             </Stack>
           </Stack>
         </Toolbar>

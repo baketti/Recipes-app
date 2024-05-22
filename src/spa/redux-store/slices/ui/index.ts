@@ -36,7 +36,6 @@ export const uiStore = createSlice({
       state.isDialogOpen = initialState.isDialogOpen;
       state.errorText = initialState.errorText;
     });
-    //builder.addCase();
   },
 });
 

@@ -91,17 +91,17 @@ export const RecipeCard = memo(({recipe}:RecipeCardProps) => {
                 </Stack>
                 <Box>
                     <Stack direction="row" spacing={1}>
-                        <Tooltip title={recipe.nutrition?.nutrients[1].name+'s'}>
+                        <Tooltip title={recipe.nutrition?.nutrients[1].name+'s'} arrow>
                             <Box sx={{display:"flex",alignItems:"center"}}> 
                                 <CircleIcon sx={{color:"#fda120"}}/> {Math.floor(recipe.nutrition?.nutrients[1].amount)}{recipe.nutrition?.nutrients[1].unit}
                             </Box>
                         </Tooltip>
-                        <Tooltip title={recipe.nutrition?.nutrients[2].name}>
+                        <Tooltip title={recipe.nutrition?.nutrients[2].name} arrow>
                             <Box sx={{display:"flex",alignItems:"center"}}> 
                                 <CircleIcon sx={{color:"#f94642"}} /> {Math.floor(recipe.nutrition?.nutrients[2].amount)}{recipe.nutrition?.nutrients[2].unit}
                             </Box>
                         </Tooltip>
-                        <Tooltip title={recipe.nutrition?.nutrients[3].name+'s'}>
+                        <Tooltip title={recipe.nutrition?.nutrients[3].name+'s'} arrow>
                             <Box sx={{display:"flex",alignItems:"center"}}> 
                                 <CircleIcon sx={{color:"#3177bb"}}/> {Math.floor(recipe.nutrition?.nutrients[3].amount)}{recipe.nutrition?.nutrients[3].unit}
                             </Box>

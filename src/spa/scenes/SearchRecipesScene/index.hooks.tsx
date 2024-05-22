@@ -60,6 +60,7 @@ export const useSearchRecipesScene = () => {
   const recipesList = useSelector(selectors.getRecipesList);
 
   const fetchBestRecipes = useCallback(async():Promise<Recipe[]> => {
+    try {
       const { data } = await axios.get<ApiResponse>(
         'https://api.spoonacular.com/recipes/complexSearch', {
           params:{
@@ -71,9 +72,14 @@ export const useSearchRecipesScene = () => {
         });
       const { results } = data;
       return results.map(convertToRecipe);
+    } catch(error) {
+      console.error(error);
+      return [];
+    }
   }, []);
-
+   
   const fetchHelthiestRecipes = useCallback(async():Promise<Recipe[]> => {
+    try {
       const { data } = await axios.get<ApiResponse>(
         'https://api.spoonacular.com/recipes/complexSearch', {
           params:{
@@ -85,9 +91,13 @@ export const useSearchRecipesScene = () => {
         });
       const { results } = data;
       return results.map(convertToRecipe);
+    } catch(error) {
+      console.error(error);
+      return [];
+    }
   }, []);
 
-/*   useEffect(() => {
+  useEffect(() => {
       const getBestRecipes = async () => {
           const recipes = await fetchBestRecipes();
           setBestRecipes(recipes);
@@ -100,7 +110,7 @@ export const useSearchRecipesScene = () => {
       getHelthiestRecipes();
     }, 
     [fetchBestRecipes,fetchHelthiestRecipes]
-  );       */           
+  );                 
 
   const handleFiltersIconClick = useCallback(() => {
     dispatch(actions.setDialogOpen({

@@ -5,7 +5,8 @@ import {
     Typography, 
     Box, 
     CircularProgress, 
-    Divider 
+    Divider,
+    Tooltip
 } from '@mui/material';
 import Image from 'next/image';
 import { NutrientsGraph } from '@/components/NutrientsGraph';
@@ -19,7 +20,8 @@ import TimerIcon from '@mui/icons-material/Timer';
 import noImageAvailable from '@/assets/No_Image_Available.png';
 import { TasteGraph } from '@/components/TasteGraph';
 import { ErrorMessage } from '@/components/ErrorMessage';
-import { ChevronLeft } from "@mui/icons-material";
+import { BackButton } from "@/components/BackButton";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 
 type RecipeDetailsSceneProps = {};
 
@@ -54,31 +56,7 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                 width: "350px",
             },
         }}>
-            <Box sx={{
-                position:"absolute", 
-                left:0,
-            }}>
-                <Box onClick={()=> navigate("/")} sx={{cursor:"pointer",display:"flex",alignItems:"center"}}>
-                    <ChevronLeft
-                        sx={{
-                        width: "24px",
-                        height: "24px",
-                        color: "#E39257",
-                        }}
-                    />
-                    <Typography 
-                        variant="h6" 
-                        color="#E39257" 
-                        sx={{
-                            "&:hover":{
-                                textDecoration:"underline",
-                            }
-                        }}
-                    >
-                        Back to recipes
-                    </Typography>
-                </Box>
-            </Box>
+            <BackButton isDetailsScene={true} />
             <Stack 
                 direction={{ xs: 'column', lg: 'row' }} 
                 spacing={2} 
@@ -226,6 +204,9 @@ const RecipeDetailsScene = memo(({}:RecipeDetailsSceneProps) => {
                     }
                 </Stack>
             </Stack>
+            <Tooltip title="Scroll to top">
+                <ScrollToTopButton />
+            </Tooltip>
         </Stack>
     );
 })

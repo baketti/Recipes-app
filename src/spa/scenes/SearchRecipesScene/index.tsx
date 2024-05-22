@@ -18,6 +18,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 import { FiltersFormDialog } from "@/components/FiltersFormDialog";
 import { Tooltip } from '@mui/material';
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
+import { BackButton } from "@/components/BackButton";
 
 type SearchRecipesSceneProps = {};
 
@@ -35,31 +36,7 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
 
   return (
     <Stack position="relative" sx={{ p: 2, alignItems:"center", width:"100%", mb:10 }} spacing={4}>
-      <Box sx={{
-          position:"absolute", 
-          left:0, 
-          top:{xs:-2,sm:'unset'},
-          pl:{xs:2,sm:0},
-        }}
-      >
-        <NextLink href="/" style={{display:"flex",alignItems:"center",textDecoration:"none"}}>
-          <ChevronLeft
-            sx={{
-              width: "24px",
-              height: "24px",
-              color: "#E39257",
-            }}
-          />
-          <Typography variant="h6" color="#E39257" sx={{ 
-              "&:hover":{
-                textDecoration:"underline",
-              }
-            }}
-          >
-            Back to home
-          </Typography>
-        </NextLink>
-      </Box>
+      <BackButton isDetailsScene={false} />
       <FormProvider {...formData}>
         <form onSubmit={triggerSubmit} style={{width:"100%"}}>
           <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
