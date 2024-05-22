@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 type AppBarProps = {};
 
-export const Appbar= memo(({}: AppBarProps) => {
+export const Appbar = memo(({}: AppBarProps) => {
   return (
       <AppBar>
         <Toolbar>
