@@ -26,10 +26,11 @@ const nextConfig = {
     ],
     },
     transpilePackages: ['@mui/x-charts'],
-    webpack: {
-      disableServerWebpackPlugin: true,
-      disableClientWebpackPlugin: true,
-    }
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+      config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//))
+   
+      return config
+    },
 };
 
 export default nextConfig;
