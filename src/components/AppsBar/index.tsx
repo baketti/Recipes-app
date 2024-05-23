@@ -11,9 +11,9 @@ import logo from "@/assets/logo.svg";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Link from 'next/link';
 
-type AppBarProps = {};
+type AppsBarProps = {};
 
-export const Appbar = memo(({}: AppBarProps) => {
+export const AppsBar = memo(({}: AppsBarProps) => {
   return (
       <AppBar>
         <Toolbar>
@@ -59,4 +59,4 @@ export const Appbar = memo(({}: AppBarProps) => {
   );
 });
 
-Appbar.displayName = "Appbar";
+AppsBar.displayName = "AppsBar";
