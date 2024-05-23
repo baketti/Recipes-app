@@ -8,7 +8,6 @@ const __filename = fileURLToPath(import.meta.url);
 // Ottieni il percorso della directory corrente
 const __dirname = dirname(__filename);
 
-
 const nextConfig = {
     images: {
       remotePatterns: [
@@ -27,10 +26,10 @@ const nextConfig = {
     ],
     },
     transpilePackages: ['@mui/x-charts'],
-    webpack: (config) => {
-      config.resolve.alias['@'] = resolve(__dirname, './src');
-      return config;
-    },
+    webpack: {
+      disableServerWebpackPlugin: true,
+      disableClientWebpackPlugin: true,
+    }
 };
 
 export default nextConfig;
