@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Footer } from "@/components/Footer";
 import { lightTheme } from "@/themes";
-import { Appbar } from "@/components/Appbar";
+import Appbar from "@/components/Appbar";
 
 type PageContainerProps = {
   background?: string;

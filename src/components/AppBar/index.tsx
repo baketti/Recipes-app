@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 type AppBarProps = {};
 
-export const Appbar = memo(({}: AppBarProps) => {
+const Appbar = memo(({}: AppBarProps) => {
   return (
       <AppBar>
         <Toolbar>
@@ -61,3 +61,5 @@ export const Appbar = memo(({}: AppBarProps) => {
 });
 
 Appbar.displayName = "Appbar";
+
+export default Appbar;
