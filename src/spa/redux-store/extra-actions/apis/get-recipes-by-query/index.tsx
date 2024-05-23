@@ -25,7 +25,7 @@
     ApiSuccessAction<GetRecipesByQueryResponseData, GetRecipesByQueryParams>,
     ApiFailAction<GetRecipesByQueryParams>
   >(
-    "apis/spoonacular/complexSearch",
+    "apis/spoonacular/complexSearch/query",
     (
       params: GetRecipesByQueryParams,
     ) => ({

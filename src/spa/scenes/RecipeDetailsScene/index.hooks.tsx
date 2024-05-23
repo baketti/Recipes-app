@@ -4,13 +4,19 @@ import { actions, selectors } from '@/spa/redux-store';
 import { useParams } from 'react-router-dom';
 
 export const useRecipeDetailsScene = () => { 
+    const [imgSrc, setImgSrc] = useState<string>('');
+
     const dispatch = useDispatch();
     
     const { recipeId } = useParams<{ recipeId:string }>();
     
     const recipe = useSelector(selectors.getCurrentRecipe);
 
-    const [imgSrc, setImgSrc] = useState<string>(recipe?.image ?? '');
+    useEffect(() => {
+        if (recipe?.image) {
+            setImgSrc(recipe.image);
+        }
+    }, [recipe]);
 
     const isLoadingRecipe = useSelector(
         selectors.getAjaxIsLoadingByApi(actions.getRecipeByRecipeId.api)

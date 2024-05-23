@@ -19,7 +19,7 @@ export interface GetBestRecipesResponseData {
     ApiSuccessAction<GetBestRecipesResponseData, GetBestRecipesParams>,
     ApiFailAction<GetBestRecipesParams>
   >(
-    "apis/spoonacular/complexSearch",
+    "apis/spoonacular/complexSearch/best",
     (
       params: GetBestRecipesParams,
     ) => ({

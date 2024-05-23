@@ -79,13 +79,13 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
             )}
             {!!bestRecipes.length && !!healthiestRecipes.length ? ( 
                 <>
-                   <Stack alignItems='center' spacing={2} sx={{mt:10}}>
+                   <Stack alignItems='center' spacing={2}>
                     <Typography variant="h1" fontWeight="bold" color="primary">
                       Best Recipes
                     </Typography>
                     <RecipesList recipesList={bestRecipes}/>
                   </Stack>
-                  <Stack alignItems='center' spacing={2} sx={{mt:10}}>
+                  <Stack alignItems='center' spacing={2}>
                     <Typography variant="h1" fontWeight="bold" color="primary">
                       Healthiest Recipes
                     </Typography>

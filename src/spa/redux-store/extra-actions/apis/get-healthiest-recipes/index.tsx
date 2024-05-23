@@ -18,7 +18,7 @@ export interface GetHealthiestRecipesResponseData {
     ApiSuccessAction<GetHealthiestRecipesResponseData, GetHealthiestRecipesParams>,
     ApiFailAction<GetHealthiestRecipesParams>
   >(
-    "apis/spoonacular/complexSearch",
+    "apis/spoonacular/complexSearch/healthiest",
     (
       params: GetHealthiestRecipesParams,
     ) => ({

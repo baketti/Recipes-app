@@ -1,11 +1,9 @@
-import axios from 'axios';
-import { useState, useMemo, useEffect, useCallback } from "react";
+import { useMemo, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from "react-redux";
 import { actions, selectors } from "@/spa/redux-store";
-import { Recipe, convertToRecipe } from "@/models/Recipe";
 import { DialogTypes } from "@/spa/redux-store/slices/ui/ui.interfaces";
 
 /* const schema = yup.object().shape({
@@ -36,16 +34,14 @@ type FormSearchRecipesData = {
   query: string;
 }
 
-type ApiResponse = {
-  results: Record<string, any>[];
-};
-
 export const useSearchRecipesScene = () => {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(actions.getRecipesRandom.request({}));
+    dispatch(actions.getBestRecipes.request({}));
+    dispatch(actions.getHelthiestRecipes.request({}));
     return () => {
         dispatch(actions.resetRecipesList());
     }
@@ -60,7 +56,6 @@ export const useSearchRecipesScene = () => {
   const bestRecipes = useSelector(selectors.getBestRecipesList);
 
   const healthiestRecipes = useSelector(selectors.getHealthiestRecipesList)
-
 
   const handleFiltersIconClick = useCallback((event: React.MouseEvent) => {
     event.preventDefault();
@@ -122,60 +117,3 @@ export const useSearchRecipesScene = () => {
     healthiestRecipes,
   };
 };
-
-/*   const [bestRecipes, setBestRecipes] = useState<Recipe[]>([]);
-  const [helthiestRecipes, setHelthiestRecipes] = useState<Recipe[]>([]);
-
-  const fetchBestRecipes = useCallback(async():Promise<Recipe[]> => {
-    try {
-      const { data } = await axios.get<ApiResponse>(
-        'https://api.spoonacular.com/recipes/complexSearch', {
-          params:{
-            apiKey:process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
-            number: 4,
-            sort: 'popularity',
-            addRecipeNutrition: true,
-          }
-        });
-      const { results } = data;
-      return results.map(convertToRecipe);
-    } catch(error) {
-      console.error(error);
-      return [];
-    }
-  }, []);
-   
-  const fetchHelthiestRecipes = useCallback(async():Promise<Recipe[]> => {
-    try {
-      const { data } = await axios.get<ApiResponse>(
-        'https://api.spoonacular.com/recipes/complexSearch', {
-          params:{
-            apiKey:process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
-            number: 4,
-            sort: 'healthiness',
-            addRecipeNutrition: true,
-          }
-        });
-      const { results } = data;
-      return results.map(convertToRecipe);
-    } catch(error) {
-      console.error(error);
-      return [];
-    }
-  }, []);
-
-  useEffect(() => {
-      const getBestRecipes = async () => {
-          const recipes = await fetchBestRecipes();
-          setBestRecipes(recipes);
-      };
-      const getHelthiestRecipes = async () => {
-          const recipes = await fetchHelthiestRecipes();
-          setHelthiestRecipes(recipes);
-      }
-      getBestRecipes();
-      getHelthiestRecipes();
-    }, 
-    [fetchBestRecipes,fetchHelthiestRecipes]
-  );                 
- */
