@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Footer } from "@/components/Footer";
 import { lightTheme } from "@/themes";
-import Appbar from "@/components/Appbar";
+import Appbar from "../Appbar";
 
 type PageContainerProps = {
   background?: string;
@@ -49,7 +49,8 @@ export const PageContainer = memo(
               minHeight: "100vh",
             }}
           >
-              <Appbar />
+             {/*  <Appbar /> */}
+             <Footer />
               <Container maxWidth="lg" sx={{ minHeight: "100vh" }}>
                 <Stack
                   sx={{
@@ -64,7 +65,8 @@ export const PageContainer = memo(
                 </Stack>
               </Container>
             </Stack>
-          <Footer />
+         {/*  <Footer /> */}
+         <Appbar />
         </Box>
       </ThemeProvider>
     );

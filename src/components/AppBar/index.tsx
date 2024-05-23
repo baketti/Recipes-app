@@ -24,7 +24,6 @@ const Appbar = memo(({}: AppBarProps) => {
               spacing={2}
               justifyContent="center"
             >
-              
                 <Image
                   src={logo}
                   alt="Logo"

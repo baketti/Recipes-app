@@ -16,13 +16,13 @@ const nextConfig = {
           pathname: "**/ingredients_100x100/**",
         }
     ],
-    },
-    transpilePackages: ['@mui/x-charts'],
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-      config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /\/__tests__\// }))
-   
-      return config
-    },
+  },
+  transpilePackages: ['@mui/x-charts'],
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /\/__tests__\// }))
+  
+    return config
+  },
 };
 
 export default nextConfig;
