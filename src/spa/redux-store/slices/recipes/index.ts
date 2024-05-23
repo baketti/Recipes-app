@@ -6,6 +6,8 @@ import { convertToRecipe } from "@/models/Recipe";
 
 const initialState: RecipesState = {
   recipesList: [],
+  bestRecipesList: [],
+  healthRecipesList: [],
   currentRecipe: null,
   queryFilters: {},
 };
@@ -49,6 +51,18 @@ export const recipesStore = createSlice({
       extraActions.getRecipeByRecipeId.success,
       (state, action) => {        
         state.currentRecipe = action.payload.data ?? null;
+      }
+    );
+    builder.addCase(
+      extraActions.getBestRecipes.success,
+      (state, action) => {
+        state.bestRecipesList = action.payload.data.results.map(convertToRecipe);
+      }
+    );
+    builder.addCase(
+      extraActions.getHelthiestRecipes.success,
+      (state, action) => {
+        state.healthRecipesList = action.payload.data.results.map(convertToRecipe);
       }
     );
   }

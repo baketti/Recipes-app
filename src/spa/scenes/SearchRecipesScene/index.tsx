@@ -31,7 +31,7 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
     triggerSubmit,
     submitDisabled,
     bestRecipes,
-    helthiestRecipes,
+    healthiestRecipes,
   } = useSearchRecipesScene();
 
   return (
@@ -77,9 +77,9 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
             ):(
               <ErrorMessage noDataMessage="No recipes found"/>
             )}
-            {!!bestRecipes.length && !!helthiestRecipes.length ? (
+            {!!bestRecipes.length && !!healthiestRecipes.length ? ( 
                 <>
-                  <Stack alignItems='center' spacing={2} sx={{mt:10}}>
+                   <Stack alignItems='center' spacing={2} sx={{mt:10}}>
                     <Typography variant="h1" fontWeight="bold" color="primary">
                       Best Recipes
                     </Typography>
@@ -89,8 +89,8 @@ const SearchRecipesScene = memo(({}: SearchRecipesSceneProps) => {
                     <Typography variant="h1" fontWeight="bold" color="primary">
                       Healthiest Recipes
                     </Typography>
-                    <RecipesList recipesList={helthiestRecipes}/>
-                  </Stack>
+                    <RecipesList recipesList={healthiestRecipes}/>
+                  </Stack> 
                 </>
               ) : <></>
             }

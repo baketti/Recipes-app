@@ -9,6 +9,7 @@ const styles = {
       bottom: {xs:'60px',sm:'80px'},
       right: {xs:'18px',sm:'50px'},
       padding: '10px 10px',
+      minWidth: 'unset!important',
       width: '50px',
       height: '50px',
       fontSize: '16px',

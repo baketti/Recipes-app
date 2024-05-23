@@ -41,8 +41,6 @@ type ApiResponse = {
 };
 
 export const useSearchRecipesScene = () => {
-  const [bestRecipes, setBestRecipes] = useState<Recipe[]>([]);
-  const [helthiestRecipes, setHelthiestRecipes] = useState<Recipe[]>([]);
 
   const dispatch = useDispatch();
 
@@ -59,58 +57,10 @@ export const useSearchRecipesScene = () => {
 
   const recipesList = useSelector(selectors.getRecipesList);
 
-  const fetchBestRecipes = useCallback(async():Promise<Recipe[]> => {
-    try {
-      const { data } = await axios.get<ApiResponse>(
-        'https://api.spoonacular.com/recipes/complexSearch', {
-          params:{
-            apiKey:process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
-            number: 4,
-            sort: 'popularity',
-            addRecipeNutrition: true,
-          }
-        });
-      const { results } = data;
-      return results.map(convertToRecipe);
-    } catch(error) {
-      console.error(error);
-      return [];
-    }
-  }, []);
-   
-  const fetchHelthiestRecipes = useCallback(async():Promise<Recipe[]> => {
-    try {
-      const { data } = await axios.get<ApiResponse>(
-        'https://api.spoonacular.com/recipes/complexSearch', {
-          params:{
-            apiKey:process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
-            number: 4,
-            sort: 'healthiness',
-            addRecipeNutrition: true,
-          }
-        });
-      const { results } = data;
-      return results.map(convertToRecipe);
-    } catch(error) {
-      console.error(error);
-      return [];
-    }
-  }, []);
+  const bestRecipes = useSelector(selectors.getBestRecipesList);
 
-  useEffect(() => {
-      const getBestRecipes = async () => {
-          const recipes = await fetchBestRecipes();
-          setBestRecipes(recipes);
-      };
-      const getHelthiestRecipes = async () => {
-          const recipes = await fetchHelthiestRecipes();
-          setHelthiestRecipes(recipes);
-      }
-      getBestRecipes();
-      getHelthiestRecipes();
-    }, 
-    [fetchBestRecipes,fetchHelthiestRecipes]
-  );                 
+  const healthiestRecipes = useSelector(selectors.getHealthiestRecipesList)
+
 
   const handleFiltersIconClick = useCallback((event: React.MouseEvent) => {
     event.preventDefault();
@@ -169,6 +119,63 @@ export const useSearchRecipesScene = () => {
     triggerSubmit,
     submitDisabled,
     bestRecipes,
-    helthiestRecipes,
+    healthiestRecipes,
   };
 };
+
+/*   const [bestRecipes, setBestRecipes] = useState<Recipe[]>([]);
+  const [helthiestRecipes, setHelthiestRecipes] = useState<Recipe[]>([]);
+
+  const fetchBestRecipes = useCallback(async():Promise<Recipe[]> => {
+    try {
+      const { data } = await axios.get<ApiResponse>(
+        'https://api.spoonacular.com/recipes/complexSearch', {
+          params:{
+            apiKey:process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
+            number: 4,
+            sort: 'popularity',
+            addRecipeNutrition: true,
+          }
+        });
+      const { results } = data;
+      return results.map(convertToRecipe);
+    } catch(error) {
+      console.error(error);
+      return [];
+    }
+  }, []);
+   
+  const fetchHelthiestRecipes = useCallback(async():Promise<Recipe[]> => {
+    try {
+      const { data } = await axios.get<ApiResponse>(
+        'https://api.spoonacular.com/recipes/complexSearch', {
+          params:{
+            apiKey:process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY,
+            number: 4,
+            sort: 'healthiness',
+            addRecipeNutrition: true,
+          }
+        });
+      const { results } = data;
+      return results.map(convertToRecipe);
+    } catch(error) {
+      console.error(error);
+      return [];
+    }
+  }, []);
+
+  useEffect(() => {
+      const getBestRecipes = async () => {
+          const recipes = await fetchBestRecipes();
+          setBestRecipes(recipes);
+      };
+      const getHelthiestRecipes = async () => {
+          const recipes = await fetchHelthiestRecipes();
+          setHelthiestRecipes(recipes);
+      }
+      getBestRecipes();
+      getHelthiestRecipes();
+    }, 
+    [fetchBestRecipes,fetchHelthiestRecipes]
+  );                 
+ */
