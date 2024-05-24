@@ -1,9 +1,9 @@
-import React, {FC, memo} from 'react';
+import React, { memo } from 'react';
 import { Stack, Typography } from '@mui/material';
 
 type FooterProps = {};
 
-export const Footer:FC = memo(({}:FooterProps) => {
+export const Footer = memo(({}:FooterProps) => {
   return (
     <Stack 
       width="100%" 
