@@ -1,6 +1,6 @@
 # Healthy Meals
 
-It's a single-page application that provides users with access to vegetarian recipes from the Spoonacular API. Users can effortlessly explore vegetarian recipes and related details through an intuitive and user-friendly interface: https://healthy-meals-nine.vercel.app.
+It's a single-page application offering users access to vegetarian recipes from the Spoonacular API. With an easy-to-use and intuitive interface, users can seamlessly discover vegetarian recipes and their details: https://healthy-meals-nine.vercel.app.
 
 # About the project 
 A project for:
