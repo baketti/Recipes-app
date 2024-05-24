@@ -1,3 +1,11 @@
+# Healthy Meals
+
+It's a single-page application that provides users with access to vegetarian recipes from the Spoonacular API. Users can effortlessly explore vegetarian recipes and related details through an intuitive and user-friendly interface: https://healthy-meals-nine.vercel.app.
+
+# About the project 
+A project for:
+### Final exam for the React course of Start2Impact University!
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
