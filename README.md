@@ -5,6 +5,21 @@ It's a single-page application offering users access to vegetarian recipes from 
 # About the project 
 A project for:
 ### Final exam for the React course of Start2Impact University!
+# Project score and feedback from  Lorenzo De Francesco, Senior Full Stack Developer.
+## Score: 500/500
+## Feedback:
+Ciao Emanuele,
+hai fatto un ottimo lavoro, ho soprattutto apprezzato il fatto che hai usato NextJS.
+
+Il progetto mi sembra fatto molto bene,ho apprezzato molto material UI e l'uso degli hooks. 
+
+Ottimo lavoro
+
+Ciao
+
+Lorenzo
+
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
