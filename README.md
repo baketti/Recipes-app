@@ -6,7 +6,7 @@ It's a single-page application offering users access to vegetarian recipes from 
 I implemented a single-page application using Next.js to meet the project requirements, specifically the use of libraries such as React Router DOM and Redux. Otherwise, I understand it was not necessary because Next.js already handles everything optimally. The pattern I used is useful only if we don't want or it's not necessary to index the content of the website on search engines.
 
 A project for:
-### Final exam for the React course of Start2Impact University!
+### Final exam for the React course of Start2Impact University! Score: 500/500
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
