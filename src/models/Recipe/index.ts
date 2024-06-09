@@ -100,7 +100,6 @@ export enum NutrientsLabels {
 }
 
 export enum Intolerances {
-    CANCEL = "",
     DAIRY = "Dairy",
     EGG = "Egg",
     GLUTEN = "Gluten",
@@ -116,7 +115,6 @@ export enum Intolerances {
 }
 
 export enum Cuisines {
-    CANCEL = "",
     AFRICAN = "African",
     AMERICAN = "American",
     BRITISH = "British",
@@ -141,7 +139,6 @@ export enum Cuisines {
 }
 
 export enum MealTypes {
-    CANCEL = "",
     MAIN_COURSE = "main course",
     SIDE_DISH = "side dish",
     DESSERT = "dessert",

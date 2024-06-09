@@ -22,7 +22,7 @@ export const useQueryFiltersForm = () => {
     const mealTypesOptions = useMemo(() => 
         Object.values(MealTypes).map(mealType => { 
             return { value: mealType, label: mealType };
-         }), 
+         }),
     []);
 
     return {

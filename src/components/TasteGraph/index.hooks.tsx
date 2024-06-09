@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Taste, tasteLabels } from "@/models/Recipe";
 
 export const useTasteGraph = (taste:Taste) => {
-    const tasteEntries = useMemo(() => Object.entries(taste), [taste]);
+    const tasteEntries = useMemo(() => taste ? Object.entries(taste) : [], [taste]);
 
     const dataset = useMemo(() => 
             tasteEntries.map(entry => ({
