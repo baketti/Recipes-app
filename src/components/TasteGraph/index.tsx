@@ -19,12 +19,12 @@ type TasteGraphProps = {
 
 export const TasteGraph = memo(({taste}: TasteGraphProps) => {
   const {
-    dataset
+    tasteDataset
   } = useTasteGraph(taste);
 
   return  (
     <BarChart
-      dataset={dataset}
+      dataset={tasteDataset}
       yAxis={[{ scaleType: 'band', dataKey: 'key' }]}
       series={[{ dataKey: 'taste', label: 'Taste'}]}
       layout="horizontal"
