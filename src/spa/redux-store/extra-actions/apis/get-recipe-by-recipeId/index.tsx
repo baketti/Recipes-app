@@ -27,6 +27,7 @@ import {
         method: HttpMethod.GET,
         query: {
           includeNutrition: true,
+          addTasteData: true
         }
       },
     ),
